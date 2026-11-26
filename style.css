@@ -99,3 +99,60 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   header small { font-size: 13px; }
   .task > .actions { justify-content: stretch; }
 }
+
+/* Tablet family menu and paged chore views */
+.wall-layout header { padding-top: 12px; padding-bottom: 12px; }
+.wall-layout header div { flex: 1; }
+.wall-layout header h1 { margin: 0; }
+.wall-layout header img { width: 44px; height: 44px; }
+.wall-layout #notice:empty, .wall-layout #detailControls:empty { display: none; }
+.wall-toolbar, .wall-tools, .chore-pages {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.wall-toolbar { justify-content: space-between; margin-bottom: 12px; }
+.wall-toolbar h2 { margin: 0; font-size: 24px; }
+.detail-heading { justify-content: flex-start; gap: 16px; }
+.wall-layout #week { font-size: 15px; color: var(--muted); }
+.family-grid, .chore-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.family-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #e0efff;
+  color: #29243b;
+  border: 1px solid #0002;
+  border-radius: 18px;
+  padding: 10px 15px;
+  box-shadow: 0 3px 0 #40224b19;
+}
+.family-card[data-profile="mum"] { background: #f5e2ff; }
+.family-card[data-profile="child1"] { background: #d9f5e9; }
+.family-card[data-profile="child2"] { background: #ffebc9; }
+.family-card[data-profile="shared"] { background: #eee5fa; grid-column: 1 / -1; }
+.family-name { display: block; font-size: 24px; overflow-wrap: break-word; }
+.chore-counts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 4px;
+}
+.chore-counts > span { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px; font-size: 14px; }
+.chore-counts strong { font-size: 23px; }
+.wall-tools, .chore-pages { margin: 12px 0 0; }
+.chore-pages { justify-content: center; }
+.wall-layout .chore-grid { margin-top: 12px; }
+.wall-layout .chore-grid .task { margin: 0; align-items: flex-start; flex-wrap: wrap; }
+.wall-layout .chore-grid .actions { margin-left: auto; }
+.wall-layout .empty { padding: 12px 0; }
+@media (max-width: 600px) {
+  .chore-grid { grid-template-columns: minmax(0, 1fr); }
+  .family-name { font-size: 20px; }
+  .family-card { padding: 8px 9px; }
+}
