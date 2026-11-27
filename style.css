@@ -182,7 +182,10 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   border-radius: 20px;
   color: #FFFFFF;
 }
-.wall-layout .family-grid { gap: 12px; }
+.wall-layout .family-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
 .wall-layout .family-card {
   padding: 14px 18px;
   background: var(--profile-accent);
@@ -195,7 +198,7 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 .wall-layout [data-profile="child1"] { --profile-accent: #FF4084; }
 .wall-layout [data-profile="child2"] { --profile-accent: #3D5AFC; }
 .wall-layout [data-profile="shared"] { --profile-accent: #6256AA; }
-.wall-layout .family-card[data-profile="shared"] {
+.wall-layout .family-card {
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
@@ -231,7 +234,7 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 @media (max-width: 600px) {
   .wall-layout main { padding-top: 12px; }
   .wall-layout .family-card { padding: 10px; }
-  .wall-layout .family-card[data-profile="shared"] { grid-template-columns: 1fr; }
+  .wall-layout .family-card { grid-template-columns: 1fr; }
 }
 
 .wall-layout #detail[data-profile]:not([data-profile=""]) #viewTitle {
