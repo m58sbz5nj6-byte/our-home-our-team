@@ -37,3 +37,59 @@
   .side-menu .account { margin-top: 0; }
   .month-day { min-height: 40px; padding: 2px; }
 }
+
+/* Fine-line navigation and calendar */
+.wall-layout header { padding-top: 12px; padding-bottom: 12px; }
+.wall-layout header h1, .wall-layout .wall-toolbar h2, .calendar-panel h2 {
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+.wall-layout header h1 { font-size: clamp(22px, 3vw, 32px); }
+.wall-layout .app-shell { grid-template-columns: 152px minmax(0, 1fr); gap: 12px; }
+.wall-layout .side-menu { padding: 6px 0; gap: 2px; }
+.wall-layout .side-menu button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #dbdce1;
+  font-weight: 400;
+  font-size: 14px;
+}
+.menu-icon {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.wall-layout .side-menu button[aria-current] {
+  background: #191A1E;
+  color: white;
+  box-shadow: inset 2px 0 #6256AA;
+}
+.wall-layout .family-name, .wall-layout .chore-counts strong,
+.wall-layout .chore-grid .info strong { font-weight: 500; }
+.wall-layout .chore-counts > span, .wall-layout .chore-grid button { font-weight: 400; }
+.wall-layout #calendarView { grid-template-columns: minmax(0, 1fr) minmax(144px, 23%); gap: 10px; }
+.calendar-panel h2 { font-size: 22px; }
+.calendar-panel aside, .calendar-panel p { font-size: 14px; color: #ccc; }
+.calendar-controls button { font-weight: 400; }
+.weekday { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .055em; }
+.month-day { border: 0; box-shadow: inset -1px -1px #191A1E; font-weight: 400; font-size: 13px; }
+.month-day:nth-child(7n), .month-day:nth-child(7n - 1) { background: #191A1E; box-shadow: inset -1px -1px #212326; }
+@media (max-width: 820px) {
+  .wall-layout #calendarView { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .wall-layout .app-shell { grid-template-columns: minmax(0, 1fr); }
+  .wall-layout .side-menu button { padding: 7px 9px; }
+}
