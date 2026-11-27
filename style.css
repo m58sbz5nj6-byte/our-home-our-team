@@ -160,11 +160,11 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 /* Dark wall display */
 .wall-layout {
   color-scheme: dark;
-  --ink: #f6f4fb;
-  --muted: #bbb9cd;
+  --ink: #FFFFFF;
+  --muted: #CCCCCC;
   --paper: #212326;
-  --line: #393b4b;
-  --plum: #ad9afb;
+  --line: #5B5B5B;
+  --plum: #212326;
   min-height: 100vh;
   background: #191A1E;
 }
@@ -180,7 +180,7 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   padding: 6px 12px;
   border: 1px solid var(--line);
   border-radius: 20px;
-  color: #ded5ff;
+  color: #FFFFFF;
 }
 .wall-layout .family-grid { gap: 12px; }
 .wall-layout .family-card {
@@ -208,25 +208,26 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
-.wall-layout button { color: #171326; }
+.wall-layout button { color: #FFFFFF; }
 .wall-layout button.family-card { color: #fff; }
 .wall-layout button.secondary, .wall-layout .task .undo {
   background: #212326;
-  color: #f3eeff;
-  border: 1px solid #4b4962;
+  color: #FFFFFF;
+  border: 1px solid #5B5B5B;
 }
 .wall-layout button:focus, .wall-layout input:focus, .wall-layout select:focus {
-  outline: 3px solid #6cdeef;
+  outline: 3px solid #FFFFFF;
 }
 .wall-layout input:not([type=checkbox]), .wall-layout select {
   background: #212326;
-  border-color: #575770;
+  border-color: #5B5B5B;
 }
-.wall-layout .task { border-left-color: #a78bea; }
-.wall-layout .task.doing { border-left-color: #ffbb72; }
-.wall-layout .task.done { background: #1d2b29; border-left-color: #7fddbd; }
-.wall-layout .tag { background: #312b47; color: #e4d8ff; }
-.wall-layout .task.done .tag { background: #233c35; color: #acf2d8; }
+.wall-layout .task, .wall-layout .task.done { background: #212326; border-color: var(--line); }
+.wall-layout .task .start, .wall-layout .tag, .wall-layout .task.done .tag {
+  background: #212326;
+  color: #FFFFFF;
+}
+.wall-layout button, .wall-layout .task .start { border: 1px solid var(--line); }
 @media (max-width: 600px) {
   .wall-layout main { padding-top: 12px; }
   .wall-layout .family-card { padding: 10px; }
@@ -237,12 +238,31 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   border-left: 6px solid var(--profile-accent);
   padding-left: 12px;
 }
-.wall-layout #detail[data-profile]:not([data-profile=""]) [aria-pressed="true"] {
+
+.wall-layout #detail[data-profile]:not([data-profile=""]) {
+  --profile-ink: #191A1E;
+}
+.wall-layout #detail[data-profile="child2"],
+.wall-layout #detail[data-profile="shared"] {
+  --profile-ink: #FFFFFF;
+}
+.wall-layout #detail[data-profile]:not([data-profile=""]) [aria-pressed="true"],
+.wall-layout #detail .chore-grid .task {
   background: var(--profile-accent);
-  color: #101116;
+  color: var(--profile-ink);
+  border-color: transparent;
 }
-.wall-layout #detail[data-profile]:not([data-profile=""]) .task.todo {
-  border-left-color: var(--profile-accent);
+.wall-layout #detail .chore-grid .task small { color: inherit; }
+.wall-layout #detail .chore-grid .task .tag {
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
 }
-.wall-layout #detail[data-profile="child2"] [aria-pressed="true"],
-.wall-layout #detail[data-profile="shared"] [aria-pressed="true"] { color: #fff; }
+.wall-layout #detail .chore-grid .task button {
+  background: #212326;
+  color: #FFFFFF;
+  border-color: transparent;
+}
+.wall-layout #detail .chore-grid .task button:focus {
+  outline-color: var(--profile-ink);
+}
