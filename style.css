@@ -184,20 +184,18 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 }
 .wall-layout .family-grid { gap: 12px; }
 .wall-layout .family-card {
-  --profile-accent: #b49bff;
+  --profile-accent: #6948ad;
   padding: 14px 18px;
-  color: var(--ink);
-  background: #20212c;
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--profile-accent);
+  background: var(--profile-accent);
+  border: 1px solid transparent;
   border-radius: 14px;
   box-shadow: 0 4px 10px #0a0a1166;
 }
-.wall-layout .family-card[data-profile="mum"] { --profile-accent: #54d8e7; }
-.wall-layout .family-card[data-profile="child1"] { --profile-accent: #ff86b2; }
-.wall-layout .family-card[data-profile="child2"] { --profile-accent: #ffba70; }
+.wall-layout .family-card[data-profile="mum"] { --profile-accent: #00758a; }
+.wall-layout .family-card[data-profile="child1"] { --profile-accent: #3653c5; }
+.wall-layout .family-card[data-profile="child2"] { --profile-accent: #a92563; }
 .wall-layout .family-card[data-profile="shared"] {
-  --profile-accent: #7fddbd;
+  --profile-accent: #a64f0c;
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
@@ -205,14 +203,13 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 }
 .wall-layout .family-name { line-height: 1.2; }
 .wall-layout .chore-counts { margin-top: 8px; }
-.wall-layout .chore-counts > span { color: var(--muted); gap: 6px; }
+.wall-layout .chore-counts > span { gap: 6px; }
 .wall-layout .chore-counts strong {
-  color: var(--profile-accent);
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
 }
 .wall-layout button { color: #171326; }
-.wall-layout button.family-card { color: var(--ink); }
+.wall-layout button.family-card { color: #fff; }
 .wall-layout button.secondary, .wall-layout .task .undo {
   background: #2b2c3b;
   color: #f3eeff;
