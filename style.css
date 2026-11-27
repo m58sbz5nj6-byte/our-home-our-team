@@ -156,3 +156,82 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   .family-name { font-size: 20px; }
   .family-card { padding: 8px 9px; }
 }
+
+/* Dark wall display */
+.wall-layout {
+  color-scheme: dark;
+  --ink: #f6f4fb;
+  --muted: #bbb9cd;
+  --paper: #20212b;
+  --line: #393b4b;
+  --plum: #ad9afb;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top right, #251d38, #14151d 62%);
+}
+.wall-layout header {
+  background: #1a1b24;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+.wall-layout main { padding-top: 20px; }
+.wall-layout .wall-toolbar h2 { letter-spacing: -.025em; }
+.wall-layout #week {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: #ded5ff;
+}
+.wall-layout .family-grid { gap: 12px; }
+.wall-layout .family-card {
+  --profile-accent: #b49bff;
+  padding: 14px 18px;
+  color: var(--ink);
+  background: #20212c;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--profile-accent);
+  border-radius: 14px;
+  box-shadow: 0 4px 10px #0a0a1166;
+}
+.wall-layout .family-card[data-profile="mum"] { --profile-accent: #54d8e7; }
+.wall-layout .family-card[data-profile="child1"] { --profile-accent: #ff86b2; }
+.wall-layout .family-card[data-profile="child2"] { --profile-accent: #ffba70; }
+.wall-layout .family-card[data-profile="shared"] {
+  --profile-accent: #7fddbd;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 8px;
+}
+.wall-layout .family-name { line-height: 1.2; }
+.wall-layout .chore-counts { margin-top: 8px; }
+.wall-layout .chore-counts > span { color: var(--muted); gap: 6px; }
+.wall-layout .chore-counts strong {
+  color: var(--profile-accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.wall-layout button { color: #171326; }
+.wall-layout button.family-card { color: var(--ink); }
+.wall-layout button.secondary, .wall-layout .task .undo {
+  background: #2b2c3b;
+  color: #f3eeff;
+  border: 1px solid #4b4962;
+}
+.wall-layout button:focus, .wall-layout input:focus, .wall-layout select:focus {
+  outline: 3px solid #6cdeef;
+}
+.wall-layout input:not([type=checkbox]), .wall-layout select {
+  background: #191a24;
+  border-color: #575770;
+}
+.wall-layout .task { border-left-color: #a78bea; }
+.wall-layout .task.doing { border-left-color: #ffbb72; }
+.wall-layout .task.done { background: #1d2b29; border-left-color: #7fddbd; }
+.wall-layout .tag { background: #312b47; color: #e4d8ff; }
+.wall-layout .task.done .tag { background: #233c35; color: #acf2d8; }
+@media (max-width: 600px) {
+  .wall-layout main { padding-top: 12px; }
+  .wall-layout .family-card { padding: 10px; }
+  .wall-layout .family-card[data-profile="shared"] { grid-template-columns: 1fr; }
+}
