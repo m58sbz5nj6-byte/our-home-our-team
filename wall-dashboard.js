@@ -147,6 +147,7 @@ function render() {
   if (!member) return;
   $('dashboard').hidden = view !== 'home';
   $('detail').hidden = view === 'home';
+  $('detail').dataset.profile = view === 'chores' ? person : '';
   $('week').textContent = 'Rotation week ' + cycle() + ' of 4';
   const list = loaded ? items() : [];
   if (view === 'home') {
