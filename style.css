@@ -162,14 +162,14 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   color-scheme: dark;
   --ink: #f6f4fb;
   --muted: #bbb9cd;
-  --paper: #20212b;
+  --paper: #212326;
   --line: #393b4b;
   --plum: #ad9afb;
   min-height: 100vh;
-  background: radial-gradient(ellipse at top right, #251d38, #14151d 62%);
+  background: #191A1E;
 }
 .wall-layout header {
-  background: #1a1b24;
+  background: #212326;
   border: 0;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
@@ -211,7 +211,7 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 .wall-layout button { color: #171326; }
 .wall-layout button.family-card { color: #fff; }
 .wall-layout button.secondary, .wall-layout .task .undo {
-  background: #2b2c3b;
+  background: #212326;
   color: #f3eeff;
   border: 1px solid #4b4962;
 }
@@ -219,7 +219,7 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
   outline: 3px solid #6cdeef;
 }
 .wall-layout input:not([type=checkbox]), .wall-layout select {
-  background: #191a24;
+  background: #212326;
   border-color: #575770;
 }
 .wall-layout .task { border-left-color: #a78bea; }
