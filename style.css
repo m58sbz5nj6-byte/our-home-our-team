@@ -184,18 +184,18 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 }
 .wall-layout .family-grid { gap: 12px; }
 .wall-layout .family-card {
-  --profile-accent: #6948ad;
+  --profile-accent: #F39439;
   padding: 14px 18px;
   background: var(--profile-accent);
   border: 1px solid transparent;
   border-radius: 14px;
   box-shadow: 0 4px 10px #0a0a1166;
 }
-.wall-layout .family-card[data-profile="mum"] { --profile-accent: #00758a; }
-.wall-layout .family-card[data-profile="child1"] { --profile-accent: #3653c5; }
-.wall-layout .family-card[data-profile="child2"] { --profile-accent: #a92563; }
+.wall-layout .family-card[data-profile="mum"] { --profile-accent: #04AFCB; }
+.wall-layout .family-card[data-profile="child1"] { --profile-accent: #FF4084; }
+.wall-layout .family-card[data-profile="child2"] { --profile-accent: #3D5AFC; }
 .wall-layout .family-card[data-profile="shared"] {
-  --profile-accent: #a64f0c;
+  --profile-accent: #6256AA;
   display: grid;
   grid-template-columns: 1fr 2fr;
   align-items: center;
