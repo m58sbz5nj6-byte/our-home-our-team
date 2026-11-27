@@ -240,11 +240,10 @@ button:focus, select:focus, input:focus { outline: 3px solid #b16ce3; outline-of
 }
 
 .wall-layout #detail[data-profile]:not([data-profile=""]) {
-  --profile-ink: #191A1E;
-}
-.wall-layout #detail[data-profile="child2"],
-.wall-layout #detail[data-profile="shared"] {
   --profile-ink: #FFFFFF;
+}
+.wall-layout #detail .chore-grid {
+  grid-template-columns: minmax(0, 1fr);
 }
 .wall-layout #detail[data-profile]:not([data-profile=""]) [aria-pressed="true"],
 .wall-layout #detail .chore-grid .task {
