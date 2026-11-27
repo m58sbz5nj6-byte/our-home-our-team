@@ -1,5 +1,14 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212326"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.json?v=8"><link rel="icon" type="image/svg+xml" href="burgess-icon.svg"><link rel="apple-touch-icon" href="burgess-icon.svg"><link rel="stylesheet" href="style.css?v=11"><title>Our Home, Our Team</title></head><body class="wall-layout">
-<header><img src="burgess-icon.svg" alt=""><div><h1>Our Home, Our Team</h1><time id="headerDate"></time></div><button id="logout" class="secondary" hidden>Sign out</button></header>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212326"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.json?v=8"><link rel="icon" type="image/svg+xml" href="burgess-icon.svg"><link rel="apple-touch-icon" href="burgess-icon.svg"><link rel="stylesheet" href="style.css?v=11"><link rel="stylesheet" href="calendar-layout.css"><title>Our Home, Our Team</title></head><body class="wall-layout">
+<header><h1><time id="headerDate"></time></h1></header>
+<div class="app-shell">
+<nav class="side-menu" aria-label="Household">
+  <button id="dashboardTab" class="secondary" hidden><span aria-hidden="true">⌂</span> Dashboard</button>
+  <button id="calendarTab" class="secondary" hidden><span aria-hidden="true">▦</span> Calendar</button>
+  <button id="manageTab" class="secondary" hidden><span aria-hidden="true">☑</span> Manage chores</button>
+  <button id="historyTab" class="secondary" hidden><span aria-hidden="true">↺</span> History</button>
+  <button id="signinTab" class="secondary account"><span aria-hidden="true">⇥</span> Sign in</button>
+  <button id="logout" class="secondary account" hidden><span aria-hidden="true">⇤</span> Sign out</button>
+</nav>
 <main>
   <p id="notice" role="status">Connecting…</p>
   <section id="login" hidden>
@@ -14,10 +23,20 @@
     <section id="dashboard">
       <div class="wall-toolbar"><h2 id="dashboardTitle" tabindex="-1">Chores outstanding</h2><span id="week"></span></div>
       <div id="people" class="family-grid"></div>
-      <div class="wall-tools">
-        <button id="manageTab" class="secondary" hidden>Manage chores</button>
-        <button id="historyTab" class="secondary">History</button>
+
+    </section>
+    <section id="calendarView" hidden>
+      <div class="calendar-panel">
+        <div class="wall-toolbar"><h2 id="calendarTitle" tabindex="-1"></h2>
+          <div class="calendar-controls">
+            <button id="previousMonth" class="secondary" aria-label="Previous month">‹</button>
+            <button id="currentMonth" class="secondary">Today</button>
+            <button id="nextMonth" class="secondary" aria-label="Next month">›</button>
+          </div>
+        </div>
+        <div id="calendarGrid" class="month-grid"></div>
       </div>
+      <aside class="calendar-panel"><h2>Upcoming</h2><p>Connect a calendar to see upcoming events and who they’re for.</p></aside>
     </section>
     <section id="detail" hidden>
       <div class="wall-toolbar detail-heading"><button id="back" class="secondary">← Back</button><h2 id="viewTitle" tabindex="-1"></h2></div>
@@ -26,5 +45,6 @@
     </section>
   </section>
 </main>
-<script type="module" src="wall-dashboard.js?v=10"></script>
+</div>
+<script type="module" src="calendar-dashboard.js"></script>
 </body></html>
