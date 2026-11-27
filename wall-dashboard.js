@@ -235,12 +235,23 @@ function render() {
 }
 function manage(c){if(member.role!=='adult')return;if(!templates.length)c.append(btn('Load starter roster',async()=>{let b=writeBatch(db);seed.forEach((t,i)=>b.set(doc(db,'tasks','starter'+i),t));b.set(doc(db,'config','household'),{...settings,start:monday(day())});await b.commit();notice('Starter roster loaded.')}));let start=el('input');start.type='date';start.value=settings.start||monday(day());c.append(el('h2','Cycle start (Monday)'),start,btn('Save cycle start',()=>setDoc(doc(db,'config','household'),{...settings,start:monday(start.value)})));let nameInputs={};c.append(el('h2','Family names'));for(const p of ['dad','mum','child1','child2']){let l=el('label',names[p]+' '),i=el('input');i.value=names[p];nameInputs[p]=i;l.append(i);c.append(l)}c.append(btn('Save names',()=>setDoc(doc(db,'config','household'),{...settings,start:settings.start||monday(day()),names:Object.fromEntries(Object.entries(nameInputs).map(([p,i])=>[p,i.value.trim()||names[p]]))})));c.append(el('h2','Edit roster'),btn('Add job',()=>{editing={title:'',area:'Household',assignee:'shared',frequency:'weekly',week:1,safe:false};render()}));if(editing){let e=el('div',undefined,'editor'),fields={};for(let [k,label,opts] of [['title','Job'],['area','Area'],['assignee','Assigned to',Object.keys(names)],['frequency','Frequency',['daily','weekly','fortnightly','rotation','monthly','quarterly','halfyearly']],['week','Rotation week',['1','2','3','4']]]){let l=el('label',label),i=el(opts?'select':'input');if(opts)opts.forEach(o=>{let op=el('option',names[o]||o);op.value=o;i.append(op)});i.value=editing[k];fields[k]=i;l.append(i);e.append(l)}let safe=el('input');safe.type='checkbox';safe.checked=editing.safe;let l=el('label',' Child-safe job ');l.prepend(safe);e.append(l,btn('Save job',async()=>{let t=Object.fromEntries(Object.entries(fields).map(([k,v])=>[k,v.value]));t.week=+t.week;t.safe=safe.checked;if(!t.title.trim())throw Error('Enter a job name');if(!t.safe&&['child1','child2'].includes(t.assignee))throw Error('Adult-only job must be assigned to an adult or shared');let id=editing.id||doc(collection(db,'tasks')).id;await setDoc(doc(db,'tasks',id),t);editing=null;render()}),btn('Cancel',()=>{editing=null;render()},'secondary'));c.append(e)}templates.forEach(t=>{let x=el('div',undefined,'task'),i=el('div',undefined,'info');i.append(el('strong',choreHeading(t.title)),el('small',`${names[t.assignee]} · ${t.frequency}${t.frequency==='rotation'?' '+t.week:''}`));x.append(i,btn('Edit',()=>{editing=t;render();window.scrollTo(0,0)},'secondary'),btn('Delete',async()=>{if(confirm('Delete this recurring job?'))await deleteDoc(doc(db,'tasks',t.id))},'secondary'));c.append(x)})}
 
+const headerDateFormat = new Intl.DateTimeFormat('en-AU', {
+  day: 'numeric',
+  month: 'long',
+  timeZone: 'UTC'
+});
+function updateHeaderDate(today) {
+  const headerDate = $('headerDate');
+  headerDate.dateTime = today;
+  headerDate.textContent = headerDateFormat.format(date(today));
+}
 let lastDay = day();
+updateHeaderDate(lastDay);
 setInterval(() => {
   const today = day();
-  if (today !== lastDay && member && view !== 'manage') {
-    lastDay = today;
-    render();
-  }
+  if (today === lastDay) return;
+  lastDay = today;
+  updateHeaderDate(today);
+  if (member && view !== 'manage') render();
 }, 60000);
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
