@@ -93,3 +93,20 @@
   .wall-layout .app-shell { grid-template-columns: minmax(0, 1fr); }
   .wall-layout .side-menu button { padding: 7px 9px; }
 }
+
+.wall-layout button.calendar-event {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 3px 0;
+  padding: 5px;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  background: var(--profile-accent, #212326);
+  color: white;
+}
+.calendar-event small { display: block; }
+.month-day .calendar-event { font-size: 12px; }
+#eventDetails { margin-top: 12px; }
+#eventDetails button { margin: 4px; }

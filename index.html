@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212326"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.json?v=8"><link rel="icon" type="image/svg+xml" href="burgess-icon.svg"><link rel="apple-touch-icon" href="burgess-icon.svg"><link rel="stylesheet" href="style.css?v=11"><link rel="stylesheet" href="calendar-layout.css?v=2"><title>Our Home, Our Team</title></head><body class="wall-layout">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212326"><meta name="apple-mobile-web-app-capable" content="yes"><link rel="manifest" href="manifest.json?v=8"><link rel="icon" type="image/svg+xml" href="burgess-icon.svg"><link rel="apple-touch-icon" href="burgess-icon.svg"><link rel="stylesheet" href="style.css?v=11"><link rel="stylesheet" href="calendar-layout.css?v=3"><title>Our Home, Our Team</title></head><body class="wall-layout">
 <header><h1><time id="headerDate"></time></h1></header>
 <div class="app-shell">
 <nav class="side-menu" aria-label="Household">
@@ -36,8 +36,9 @@
         </div>
         <div id="calendarGrid" class="month-grid"></div>
       </div>
-      <aside class="calendar-panel"><h2>Upcoming</h2><p>Connect a calendar to see upcoming events and who they’re for.</p></aside>
+      <aside class="calendar-panel"><h2>Upcoming</h2><div id="upcomingEvents"></div></aside>
     </section>
+    <section id="eventDetails" class="calendar-panel" hidden></section>
     <section id="detail" hidden>
       <div class="wall-toolbar detail-heading"><button id="back" class="secondary">← Back</button><h2 id="viewTitle" tabindex="-1"></h2></div>
       <div id="detailControls" class="wall-tools"></div>
@@ -46,5 +47,5 @@
   </section>
 </main>
 </div>
-<script type="module" src="calendar-dashboard.js"></script>
+<script type="module" src="calendar-dashboard.js?v=2"></script>
 </body></html>
