@@ -32,6 +32,13 @@ test('imports a sampled CalDAV response into the calendar collection', async () 
     if (host === 'identitytoolkit.googleapis.com') return Response.json({idToken: 'stub-token'});
     assert.equal(host, 'firestore.googleapis.com');
     assert.equal(request.headers.Authorization, 'Bearer stub-token');
+    if (new URL(url).pathname.endsWith('/calendarEvents')) {
+      const name = 'projects/our-home-our-team/databases/(default)/documents/calendarEvents/';
+      return Response.json({documents: [
+        {name: name + 'old', updateTime: '2026-11-27T01:00:00Z', fields: {syncSource: {stringValue: 'icloud-family'}}},
+        {name: name + 'manual', fields: {}}
+      ]});
+    }
     commit = JSON.parse(request.body);
     return Response.json({});
   };
@@ -39,6 +46,9 @@ test('imports a sampled CalDAV response into the calendar collection', async () 
     (config, start, end) => readFamilyCalendar(config, start, end, fetcher),
     (events, config) => writeCalendarEvents(events, config, fetcher));
   assert.equal(count, 1);
+  assert.equal(commit.writes.length, 2);
+  assert.ok(commit.writes[1].delete.endsWith('/calendarEvents/old'));
+  assert.equal(commit.writes[1].currentDocument.updateTime, '2026-11-27T01:00:00Z');
   const event = commit.writes[0].update;
   assert.match(event.name, /\/calendarEvents\/[a-f0-9]{64}$/);
   assert.equal(event.fields.title.stringValue, 'Sample event');
