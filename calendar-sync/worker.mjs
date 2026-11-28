@@ -2,8 +2,13 @@ import {readFamilyCalendar} from './icloud.mjs';
 import {writeCalendarEvents} from './firestore.mjs';
 
 const dayMs = 86400000;
-const safeHttpError = /^(?:iCloud calendar query|Firebase sign-in|Firestore calendar list|Firestore calendar commit) failed \(HTTP \d{3}\)$/;
+const safeHttpError = /^(?:iCloud calendar query|iCloud calendar discovery|Firebase sign-in|Firestore calendar list|Firestore calendar commit) failed \(HTTP \d{3}\)$/;
 const safeDetails = new Set([
+  'iCloud calendar discovery returned an unexpected address',
+  'iCloud calendar discovery returned too many redirects',
+  'iCloud calendar discovery found no account address',
+  'iCloud calendar discovery found no calendar home',
+  'iCloud calendar discovery requires exactly one Family calendar',
   'Unexpected declaration in calendar response',
   'iCloud did not return a CalDAV multistatus',
   'iCloud returned an incomplete calendar resource',
